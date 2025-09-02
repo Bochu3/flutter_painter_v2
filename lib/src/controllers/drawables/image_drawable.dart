@@ -97,7 +97,6 @@ class ImageDrawable extends ObjectDrawable {
         rect: Rect.fromPoints(
             position - scaledSize / 2, position + scaledSize / 2),
         filterQuality: FilterQuality.medium,
-        isAntiAlias: true,
         image: image);
   }
 
