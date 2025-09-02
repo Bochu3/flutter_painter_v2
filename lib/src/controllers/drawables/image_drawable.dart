@@ -2,7 +2,7 @@ import 'dart:ui';
 
 
 import 'object_drawable.dart';
-
+import 'package:flutter/painting.dart';
 /// A drawable of an image as an object.
 class ImageDrawable extends ObjectDrawable {
   /// The image to be drawn.
@@ -92,12 +92,13 @@ class ImageDrawable extends ObjectDrawable {
     if (flipped) canvas.scale(-1, 1);
 
     // Draw the image onto the canvas.
-    canvas.drawImageRect(
-        image,
-        Rect.fromPoints(Offset.zero,
-            Offset(image.width.toDouble(), image.height.toDouble())),
-        Rect.fromPoints(position - scaledSize / 2, position + scaledSize / 2),
-        Paint());
+    paintImage(
+        canvas: canvas,
+        rect: Rect.fromPoints(
+            position - scaledSize / 2, position + scaledSize / 2),
+        filterQuality: FilterQuality.medium,
+        isAntiAlias: true,
+        image: image);
   }
 
   /// Calculates the size of the rendered object.
